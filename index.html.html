@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<button id="myButton1">Bilmeceyi göster</button>
+	<button id="myButton2" style="visibility:hidden;">Cevabı göster</button>
+	<div style="height:550px; width:545px; background-color: salmon;">
+		<p id="p1"></p>
+  	<p id="p2"></p>
+	</div>
+
+	<script>
+	// Get references to the button and the div
+	var myButton1 = document.getElementById("myButton1"); // 1. düğmeyi kodlamak için
+	var myButton2 = document.getElementById("myButton2"); // 2. düğmeyi kodlamak için
+	var myP1 = document.getElementById("p1"); // 1. paragrafın içini değiştirebilmek için
+	var myP2 = document.getElementById("p2"); // 2. paragrafın içini değiştirebilmek için
+
+	var bilmeceNumarasi=1; // Aslında kalan bilmece sayısını da izleyebilirdik
+	var hepsiBitti=false;
+	// ---
+	myButton1.addEventListener("click", function() {
+	  // --
+	  if(bilmeceNumarasi==1){
+	    myP1.textContent = "Ankara neden soğuktur?";
+	    myButton2.style.visibility = "visible";
+	  } else if(bilmeceNumarasi==2){
+	  	myP1.textContent = "Hangi top zıplamaz?";
+	    myButton2.style.visibility = "visible";
+	    myP2.textContent = " ";
+	  } else if(bilmeceNumarasi==3){
+	  	myP1.textContent = "Denizaltının bir boy büyüğü ile bir boy küçüğüne ne denir?";
+	    myButton2.style.visibility = "visible";
+	    myP2.textContent = " ";
+	  }
+
+	  // --
+	  if(hepsiBitti){
+	  	myP1.textContent = "Aferin";
+	    myP2.textContent = "Oyunu bitirdin";
+	    myButton1.style.visibility = "hidden";
+	  }
+	});
+	// ---
+	myButton2.addEventListener("click", function() {
+	  // --
+	  if(bilmeceNumarasi==1){
+	  	myP2.textContent = "Sıfır altı olduğu için. Hahahahahaha!";
+	  	myButton2.style.visibility = "hidden";
+	    bilmeceNumarasi=2;
+	    myButton1.textContent = "Sıradaki bilmeceyi göster";
+	  }else if(bilmeceNumarasi==2){
+	  	myP2.textContent = "Kar topu!";
+	  	myButton2.style.visibility = "hidden";
+			bilmeceNumarasi=3;
+	    myButton1.textContent = "Son bir tane daha gelsin";
+	  }else if(bilmeceNumarasi==3){
+	  	myP2.textContent = "Deniz yedi ve deniz beş. Hahahaha.";
+	  	myButton2.style.visibility = "hidden";
+	    myButton1.textContent = "Tüm bilmeceleri bitirdin";
+	    hepsiBitti=true;
+	    bilmeceNumarasi=0;
+	  }
+		// --
+	});
+	</script>
+
+</body>
+</html>
